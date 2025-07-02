@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
 import './Header.css'
-import Logo from '../../assets/Logo-Header.png'
+import Logo from '../../assets/Logo-with-text.png'
 import PhoneIcon from '../../assets/Phone.png'
 import EmailIcon from '../../assets/Email.png'
 

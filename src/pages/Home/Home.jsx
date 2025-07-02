@@ -108,14 +108,14 @@ const Home = ({ services }) => {
                     Почему мы?
                 </h1>
 
-                <div className='lg:w-[90%] w-fit mx-auto grid grid-cols-2 lg:grid-cols-4 gap-30 mt-10'>
+                <div className='lg:w-[90%] w-fit mx-auto grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5 mt-10'>
                     {features.map((feature, index) => (
-                        <div key={index} className='bg-[#222222] h-[400px] xl:w-[300px] lg:h-[350px] lg:w-[250px] xl:h-[400px] xl:w-[300px] flex flex-col p-5 rounded-xl hover:scale-105 duration-300'>
-                            <img src={feature.icon} alt={feature.title} className='w-[70px] h-[70px]' />
+                        <div key={index} className='bg-[#222222] h-[350px] w-[250px] md:h-[450px] md:w-[350px] xl:w-[300px] lg:h-[350px] lg:w-[250px] xl:h-[400px] xl:w-[300px] flex flex-col p-5 rounded-xl hover:scale-105 duration-300'>
+                            <img src={feature.icon} alt={feature.title} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
                             <div className='mt-[40px]'>
-                                <h2 className='text-xl font-bold'>{feature.title}</h2>
+                                <h2 className='text-xl md:text-2xl lg:text-xl font-bold'>{feature.title}</h2>
                                 <span className='block w-20 border bg-[#F9D019] my-[30px]'></span>
-                                <p className='w-[225px] xl:w-[225px]'>{feature.description}</p>
+                                <p className='w-[210px] md:w-[225px] xl:w-[225px] md:text-xl text-base lg:text-base'>{feature.description}</p>
                             </div>
                         </div>
                     ))}
@@ -129,11 +129,11 @@ const Home = ({ services }) => {
             </section>
 
             <section className='mt-10 flex flex-col items-center'>
-                <h1 className='text-4xl font-bold text-center text-[#9C9C9C]'>
+                <h1 className='text-3xl lg:text-4xl font-bold text-center text-[#9C9C9C]'>
                     Охрана стационарных объектов
                 </h1>
-                <div className='w-[920px] h-[80px] bg-[#F9D01921] flex items-center text-center rounded-2xl'>
-                    <span className=' text-[24px] text-white'>
+                <div className='w-[90%] lg:w-[920px] h-[70px] md:h-[80px] bg-[#F9D01921] flex items-center text-center rounded-2xl mt-5'>
+                    <span className='text-[16px] md:text-[20px] lg:text-[24px] text-white'>
                         это очень сложная и ответственная задача, которая представляет собой целый комплекс охранных мероприятий в основном предусмотрительного характера.
                     </span>
                 </div>
@@ -142,15 +142,14 @@ const Home = ({ services }) => {
                     Мы предлагаем следующие решения для обеспечения Вашей безопасности:
                 </h1>
 
-                <div className='w-[90%] mx-auto flex flex-wrap justify-between'>
+                <div className='w-[90%] mx-auto flex flex-wrap justify-around'>
                     {places.map((place, index) => (
-                        <div className='mx-[50px] mb-[60px] flex flex-col items-center'>
+                        <div key={index} className='mx-[10px] xl:mx-[50px] mb-[60px] flex flex-col items-center justify-center'>
                             <div
-                                key={index}
                                 style={{ backgroundImage: `url(${place.bg})` }}
-                                className='bg-contain h-[300px] w-[300px] flex flex-col justify-end p-5 rounded-xl hover:scale-105 duration-300'
+                                className='bg-contain h-[200px] w-[200px] md:h-[300px] md:w-[300px] flex flex-col justify-end p-5 rounded-xl hover:scale-105 duration-300'
                             >
-                                <span className='text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-[#D9D9D9] to-[#999999] text-center'>{place.name}</span>
+                                <span className='text-xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-[#D9D9D9] to-[#999999] text-center'>{place.name}</span>
                             </div>
                             <button className='bg-[#f9d019] w-[150px] h-[40px] rounded-full mt-5 font-[600]'>Перейти</button>
                         </div>
@@ -158,27 +157,33 @@ const Home = ({ services }) => {
                 </div>
             </section>
 
-            <section className='w-[90%] mx-auto flex items-center justify-between'>
-                <div className='mt-[200px] h-[500px] w-[500px] flex flex-col items-center justify-center rounded-2xl border border-transparent shadow-[0_0_20px_#f9d001] mb-10 contactDiv'>
-                    <h1 className='text-3xl font-bold max-w-[250px] text-center text-[#866E02]'>Оставьте заявку</h1>
-                    <h1 className='text-2xl font-bold max-w-[290px] text-center text-[#866E02]'>и мы свяжемся с вами</h1>
+            <section className='w-[80%] mx-auto flex flex-col sm:flex-row-reverse justify-between items-center md:items-start'>
+                <p className='w-[90%] sm:w-[50%] text-center md:text-left text-white text-xl sm:text-lg lg:text-[24px] sm:ml-10 sm:mt-[200px]'>
+                    Наша охрана — это не просто люди с рацией.
+                    Это обученные профессионалы, которые ежедневно обеспечивают безопасность офисов, складов, торговых точек и жилых комплексов по всему городу.
+                    <br />
+                    Мы работаем 24/7, чтобы вы чувствовали себя спокойно — всегда.
+                </p>
+                <div className='mt-[20px] sm:mt-[200px] h-[400px] w-[400px] md:h-[500px] md:w-[500px] flex flex-col items-center justify-center rounded-2xl border border-transparent shadow-[0_0_20px_#f9d001] mb-10 contactDiv'>
+                    <h1 className='text-2xl md:text-3xl font-bold max-w-[250px] text-center text-[#866E02]'>Оставьте заявку</h1>
+                    <h1 className='text-xl md:text-2xl font-bold max-w-[290px] text-center text-[#866E02]'>и мы свяжемся с вами</h1>
                     <input
                         type="text"
-                        className='mt-10 border border-white text-[#f9d019] w-[300px] h-[50px] p-3 rounded-full'
+                        className='mt-5 md:mt-10 border border-white text-[#f9d019] w-[85%] h-[50px] p-3 rounded-full'
                         placeholder='ФИО'
                     />
                     <input
                         type="text"
-                        className='mt-10 border border-white text-[#f9d019] w-[300px] h-[50px] p-3 rounded-full'
+                        className='mt-5 md:mt-10 border border-white text-[#f9d019] w-[85%] h-[50px] p-3 rounded-full'
                         placeholder='Номер телефона'
                     />
                     <input
                         type="text"
-                        className='mt-10 border border-white text-[#f9d019] w-[300px] h-[50px] p-3 rounded-full'
+                        className='mt-5 md:mt-10 border border-white text-[#f9d019] w-[85%] h-[50px] p-3 rounded-full'
                         placeholder='Электронная почта'
                     />
                     <button
-                        className='bg-[#866E02] w-[140px] h-[30px] rounded-full mt-5 font-[600] text-white text-xs'
+                        className='bg-[#866E02] w-[85%] h-[40px] md:w-[140px] md:h-[30px] rounded-full mt-5 font-[600] text-white text-xs'
                     >
                         Отправить
                     </button>
