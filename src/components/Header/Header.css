@@ -1,0 +1,50 @@
+.burger-btn {
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.burger-btn::after {
+    width: 20px;
+    height: 2px;
+    content: '';
+    position: absolute;
+    top: 0;
+    background: #fff;
+}
+
+.burger-btn::before {
+    width: 20px;
+    height: 2px;
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    background: #fff;
+}
+
+.burger-btn span{
+    width: 20px;
+    height: 2px;
+    position: absolute;
+    top: 9px;
+    background-color: #fff;
+}
+
+.burger-btn.active::after {
+    top: 9px;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+
+}
+
+.burger-btn.active::before {
+    top: 9px;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.burger-btn.active span {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
