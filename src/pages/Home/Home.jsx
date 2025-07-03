@@ -23,9 +23,12 @@ import ResidentalBg from '../../assets/Residental.png'
 import ShoppingCenterBg from '../../assets/ShoppingCenter.png'
 import ShopBg from '../../assets/Shop.png'
 import IndustrialBg from '../../assets/Industrial.png'
-import { div } from 'framer-motion/client'
+import { a, div } from 'framer-motion/client'
+import { useState } from 'react'
 
 const Home = ({ services }) => {
+    const [name, setName] = useState('')
+    const [phone, setPhone] = useState('')
 
     const features = [
         {
@@ -63,7 +66,30 @@ const Home = ({ services }) => {
     ]
 
 
+    const handleClick = async () => {
+        if (!name || !phone) return
+        const resp = await fetch('https://site-36ww.onrender.com/users/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone
+            })
+        })
 
+        const data = await resp.json()
+
+        console.log(data)
+
+        if(data.detail) return alert(data.detail)
+        
+        if(data.name){
+            alert('Заявка отправлена')
+            return;
+        }
+    }
 
     return (
         <main className='bg-[#161616]'>
@@ -108,14 +134,14 @@ const Home = ({ services }) => {
                     Почему мы?
                 </h1>
 
-                <div className='lg:w-[90%] w-fit mx-auto grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5 mt-10'>
+                <div className='lg:w-[90%] w-fit mx-auto block md:grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5 mt-10'>
                     {features.map((feature, index) => (
-                        <div key={index} className='bg-[#222222] h-[350px] w-[250px] md:h-[450px] md:w-[350px] xl:w-[300px] lg:h-[350px] lg:w-[250px] xl:h-[400px] xl:w-[300px] flex flex-col p-5 rounded-xl hover:scale-105 duration-300'>
+                        <div key={index} className='bg-[#222222] h-[450px] w-[350px] xl:w-[300px] lg:h-[350px] lg:w-[250px] xl:h-[400px] xl:w-[300px] flex flex-col p-5 rounded-xl hover:scale-105 duration-300 my-5'>
                             <img src={feature.icon} alt={feature.title} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
                             <div className='mt-[40px]'>
-                                <h2 className='text-xl md:text-2xl lg:text-xl font-bold'>{feature.title}</h2>
+                                <h2 className='text-2xl lg:text-xl font-bold'>{feature.title}</h2>
                                 <span className='block w-20 border bg-[#F9D019] my-[30px]'></span>
-                                <p className='w-[210px] md:w-[225px] xl:w-[225px] md:text-xl text-base lg:text-base'>{feature.description}</p>
+                                <p className='w-[210px] w-[225px] xl:w-[225px] text-xl lg:text-base'>{feature.description}</p>
                             </div>
                         </div>
                     ))}
@@ -144,7 +170,10 @@ const Home = ({ services }) => {
 
                 <div className='w-[90%] mx-auto flex flex-wrap justify-around'>
                     {places.map((place, index) => (
-                        <div key={index} className='mx-[10px] xl:mx-[50px] mb-[60px] flex flex-col items-center justify-center'>
+                        <div
+                            key={index}
+                            className='mx-[10px] xl:mx-[50px] mb-[60px] flex flex-col items-center justify-center'
+                        >
                             <div
                                 style={{ backgroundImage: `url(${place.bg})` }}
                                 className='bg-contain h-[200px] w-[200px] md:h-[300px] md:w-[300px] flex flex-col justify-end p-5 rounded-xl hover:scale-105 duration-300'
@@ -164,26 +193,26 @@ const Home = ({ services }) => {
                     <br />
                     Мы работаем 24/7, чтобы вы чувствовали себя спокойно — всегда.
                 </p>
-                <div className='mt-[20px] sm:mt-[200px] h-[400px] w-[400px] md:h-[500px] md:w-[500px] flex flex-col items-center justify-center rounded-2xl border border-transparent shadow-[0_0_20px_#f9d001] mb-10 contactDiv'>
+                <div className='mt-[20px] sm:mt-[200px] h-[400px] w-[90%] md:h-[500px] md:w-[500px] flex flex-col items-center justify-center rounded-2xl border border-transparent shadow-[0_0_20px_#f9d001] mb-10 contactDiv'>
                     <h1 className='text-2xl md:text-3xl font-bold max-w-[250px] text-center text-[#866E02]'>Оставьте заявку</h1>
                     <h1 className='text-xl md:text-2xl font-bold max-w-[290px] text-center text-[#866E02]'>и мы свяжемся с вами</h1>
                     <input
                         type="text"
                         className='mt-5 md:mt-10 border border-white text-[#f9d019] w-[85%] h-[50px] p-3 rounded-full'
                         placeholder='ФИО'
+                        onChange={e => setName(e.target.value)}
+                        value={name}
                     />
                     <input
                         type="text"
                         className='mt-5 md:mt-10 border border-white text-[#f9d019] w-[85%] h-[50px] p-3 rounded-full'
                         placeholder='Номер телефона'
-                    />
-                    <input
-                        type="text"
-                        className='mt-5 md:mt-10 border border-white text-[#f9d019] w-[85%] h-[50px] p-3 rounded-full'
-                        placeholder='Электронная почта'
+                        onChange={e => setPhone(e.target.value)}
+                        value={phone}
                     />
                     <button
                         className='bg-[#866E02] w-[85%] h-[40px] md:w-[140px] md:h-[30px] rounded-full mt-5 font-[600] text-white text-xs'
+                        onClick={handleClick}
                     >
                         Отправить
                     </button>

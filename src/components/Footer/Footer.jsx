@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className='w-full h-60 bg-linear-to-t from-[#020202] to-[#161616] py-10'>
       <div className='w-[90%] h-full mx-auto flex items-center justify-between flex-col md:flex-row text-white'>
-        <div className='flex items-center justify-between w-full md:w-[50%]'>
+        <div className='flex items-center justify-between w-full md:w-[45%]'>
           <img src={Logo} alt="logo" />
 
           <div className='flex justify-between'>
@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className='flex items-center justify-between w-full md:w-[50%]'>
+        <div className='flex items-center justify-between w-full md:w-[45%]'>
           <button className='w-[150px] h-[45px] bg-[#F9D019] text-xs text-[#474751] font-bold py-2 px-4 rounded-full cursor-pointer button' onClick={() => console.log('work')}>
             Оставить заявку
           </button>
